@@ -41,13 +41,13 @@ mqtt_client:
           primitive: true
       mqtt2ros:                     
         mqtt_topics:
-          - transcription
+          - PA_transcription
           - fluently/user_input
           - fluently/stress_level
           - fluently/disassembly_plan
           - fluently/nlu_output
-        transcription:          
-          ros_topic: /hfluently/transcription
+        PA_transcription:          
+          ros_topic: /hfluently/pa_transcription
           primitive: true
         fluently/user_input:       
           ros_topic: /hfluently/hfluently_response
