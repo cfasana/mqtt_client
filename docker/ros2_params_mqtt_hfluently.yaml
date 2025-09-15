@@ -35,13 +35,13 @@ mqtt_client:
           primitive: true
       mqtt2ros:                     
         mqtt_topics:
-          - transcription           # Needed to publish the transcriptions performed by the H-Fluently
+          - Dexterity_transcription           # Needed to publish the transcriptions performed by the H-Fluently
           - fluently/user_input         # Needed to publish the answer provided by the H-Fluently to a specific request
           - fluently/stress_level       # Needed to publish the stress-level estimated by the H-Fluently
           - fluently/disassembly_plan   # Needed to publish the disassembly plan loaded by the RealWear
           - fluently/nlu_output
-        transcription:          
-          ros_topic: /hfluently/transcription
+        Dexterity_transcription:          
+          ros_topic: /hfluently/dexterity_transcription
           primitive: true
         fluently/user_input:       
           ros_topic: /hfluently/hfluently_response
