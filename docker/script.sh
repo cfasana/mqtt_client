@@ -10,7 +10,7 @@ mqtt_client:
       host: "${MQTT_HOST:-localhost}"
       port: 1883
     client:
-      id: rfluently
+      id: client
       keep_alive_interval: 0.0
     bridge:
       ros2mqtt: 
@@ -41,13 +41,13 @@ mqtt_client:
           primitive: true
       mqtt2ros:                     
         mqtt_topics:
-          - MEM_transcription
+          - transcription
           - fluently/user_input
           - fluently/stress_level
           - fluently/disassembly_plan
           - fluently/nlu_output
-        MEM_transcription:          
-          ros_topic: /hfluently/mem_transcription
+        transcription:          
+          ros_topic: /hfluently/transcription
           primitive: true
         fluently/user_input:       
           ros_topic: /hfluently/hfluently_response

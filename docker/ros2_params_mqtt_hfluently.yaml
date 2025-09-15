@@ -4,7 +4,7 @@ mqtt_client:
       host: localhost
       port: 1883
     client:
-      id: user_ai_001
+      id: client
       keep_alive_interval: 0.0
     bridge:
       ros2mqtt: 
@@ -35,13 +35,13 @@ mqtt_client:
           primitive: true
       mqtt2ros:                     
         mqtt_topics:
-          - MEM_transcription           # Needed to publish the transcriptions performed by the H-Fluently
+          - transcription           # Needed to publish the transcriptions performed by the H-Fluently
           - fluently/user_input         # Needed to publish the answer provided by the H-Fluently to a specific request
           - fluently/stress_level       # Needed to publish the stress-level estimated by the H-Fluently
           - fluently/disassembly_plan   # Needed to publish the disassembly plan loaded by the RealWear
           - fluently/nlu_output
-        MEM_transcription:          
-          ros_topic: /hfluently/mem_transcription
+        transcription:          
+          ros_topic: /hfluently/transcription
           primitive: true
         fluently/user_input:       
           ros_topic: /hfluently/hfluently_response
