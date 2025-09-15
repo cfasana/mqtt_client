@@ -1,0 +1,59 @@
+mqtt_client:
+  ros__parameters:
+    broker:
+      host: localhost
+      port: 1883
+    client:
+      id: user_ai_001
+      keep_alive_interval: 0.0
+    bridge:
+      ros2mqtt: 
+        ros_topics:                 
+          - /fluently/tts                   # Needed for Text-to-Speech (TTS)
+          - /realwear/simple_intent         # Needed to request some specific actions to the RealWear
+          - /hfluently/hfluently_request    # Needed to request some specific actions to the H-Fluently
+          - /realwear/template_request      # Needed to request the RealWear to load a specific template
+          - /fluently/forward_plan          # Needed to update the RealWear GUI
+          - /realwear/continue_disassembly  # Needed to display a specific step on Realwear
+        /fluently/tts:              
+          mqtt_topic: fluently/tts
+          primitive: true
+        /realwear/simple_intent:
+          mqtt_topic: fluently/simple_intent
+          primitive: true
+        /hfluently/hfluently_request:
+          mqtt_topic: fluently/command
+          primitive: true
+        /realwear/template_request:
+          mqtt_topic: fluently/template_request
+          primitive: true
+        /fluently/forward_plan:              
+          mqtt_topic: fluently/forward_plan
+          primitive: true
+        /realwear/continue_disassembly:              
+          mqtt_topic: fluently/continue_disassembly
+          primitive: true
+      mqtt2ros:                     
+        mqtt_topics:
+          - MEM_transcription           # Needed to publish the transcriptions performed by the H-Fluently
+          - fluently/user_input         # Needed to publish the answer provided by the H-Fluently to a specific request
+          - fluently/stress_level       # Needed to publish the stress-level estimated by the H-Fluently
+          - fluently/disassembly_plan   # Needed to publish the disassembly plan loaded by the RealWear
+          - fluently/nlu_output
+        MEM_transcription:          
+          ros_topic: /hfluently/mem_transcription
+          primitive: true
+        fluently/user_input:       
+          ros_topic: /hfluently/hfluently_response
+          primitive: true
+        fluently/stress_level:       
+          ros_topic: /hfluently/human_state
+          primitive: true
+        fluently/disassembly_plan:       
+          ros_topic: /realwear/disassembly_plan
+          primitive: true
+        fluently/nlu_output:       
+          ros_topic: /nlu_output
+          primitive: true
+
+          
