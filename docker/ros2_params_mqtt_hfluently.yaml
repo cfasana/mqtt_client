@@ -40,6 +40,7 @@ mqtt_client:
           - fluently/stress_level       # Needed to publish the stress-level estimated by the H-Fluently
           - fluently/disassembly_plan   # Needed to publish the disassembly plan loaded by the RealWear
           - fluently/nlu_output
+          - fluently/user
         PA_transcription:          
           ros_topic: /hfluently/pa_transcription
           primitive: true
@@ -54,6 +55,9 @@ mqtt_client:
           primitive: true
         fluently/nlu_output:       
           ros_topic: /nlu_output
+          primitive: true
+        fluently/user:       
+          ros_topic: /fluently/user
           primitive: true
 
           
