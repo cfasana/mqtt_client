@@ -46,6 +46,7 @@ mqtt_client:
           - fluently/stress_level
           - fluently/disassembly_plan
           - fluently/nlu_output
+          - fluently/user
         CIM_transcription:          
           ros_topic: /hfluently/cim_transcription
           primitive: true
@@ -60,6 +61,9 @@ mqtt_client:
           primitive: true
         fluently/nlu_output:       
           ros_topic: /nlu_output
+          primitive: true
+        fluently/user:       
+          ros_topic: /fluently/user
           primitive: true
 EOF
 
