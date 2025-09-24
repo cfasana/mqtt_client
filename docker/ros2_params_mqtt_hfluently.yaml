@@ -4,7 +4,7 @@ mqtt_client:
       host: localhost
       port: 1883
     client:
-      id: client
+      id: client_cim
       keep_alive_interval: 0.0
     bridge:
       ros2mqtt: 
