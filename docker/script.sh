@@ -10,7 +10,7 @@ mqtt_client:
       host: "${MQTT_HOST:-localhost}"
       port: 1883
     client:
-      id: client
+      id: client_dext
       keep_alive_interval: 0.0
     bridge:
       ros2mqtt: 
