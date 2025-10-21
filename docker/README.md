@@ -8,9 +8,9 @@ Setup the MQTT2ROS bridge enabling the communication between H-Fluently and R-Fl
 ```
 docker build -t mqtt2ros .
 ```
-3) Run the container by specifying the correct `ROS_DOMAIN_ID` and `MQTT_HOST` IPv4.
+3) Run the container by specifying the correct `ROS_DOMAIN_ID`, `MQTT_HOST` IPv4, `CELL` name (`cim`, `mem`, `pa`, `dext`), and optionally `MQTT_PORT`.
     ```
-     docker run --name mqtt2ros --network host --rm -e ROS_DOMAIN_ID=<YOUR_ROS_DOMAIN_ID> -e MQTT_HOST=<YOUR_MQTT_BROKER_IP> mqtt2ros
+     docker run --name mqtt2ros --network host --rm -e ROS_DOMAIN_ID=<YOUR_ROS_DOMAIN_ID> -e MQTT_HOST=<YOUR_MQTT_BROKER_IP> -e CELL=<YOUR_CELL_NAME> mqtt2ros
     ```
     Verify that the MQTT broker is running and that the bridge is able to connect to the H-Fluently.
 

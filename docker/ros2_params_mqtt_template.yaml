@@ -1,20 +1,20 @@
 mqtt_client:
   ros__parameters:
     broker:
-      host: localhost
-      port: 1883
+      host: "${MQTT_HOST}"
+      port: ${MQTT_PORT}
     client:
-      id: client
+      id: "${CELL_LOWER}_client"
       keep_alive_interval: 0.0
     bridge:
       ros2mqtt: 
         ros_topics:                 
-          - /fluently/tts                   # Needed for Text-to-Speech (TTS)
-          - /realwear/simple_intent         # Needed to request some specific actions to the RealWear
-          - /hfluently/hfluently_request    # Needed to request some specific actions to the H-Fluently
-          - /realwear/template_request      # Needed to request the RealWear to load a specific template
-          - /fluently/forward_plan          # Needed to update the RealWear GUI
-          - /realwear/continue_disassembly  # Needed to display a specific step on Realwear
+          - /fluently/tts
+          - /realwear/simple_intent
+          - /hfluently/hfluently_request
+          - /realwear/template_request
+          - /fluently/forward_plan
+          - /realwear/continue_disassembly
         /fluently/tts:              
           mqtt_topic: fluently/tts
           primitive: true
@@ -35,13 +35,14 @@ mqtt_client:
           primitive: true
       mqtt2ros:                     
         mqtt_topics:
-          - transcription           # Needed to publish the transcriptions performed by the H-Fluently
-          - fluently/user_input         # Needed to publish the answer provided by the H-Fluently to a specific request
-          - fluently/stress_level       # Needed to publish the stress-level estimated by the H-Fluently
-          - fluently/disassembly_plan   # Needed to publish the disassembly plan loaded by the RealWear
+          - ${CELL_UPPER}_transcription
+          - fluently/user_input
+          - fluently/stress_level
+          - fluently/disassembly_plan
           - fluently/nlu_output
-        transcription:          
-          ros_topic: /hfluently/transcription
+          - fluently/user
+        ${CELL_UPPER}_transcription:          
+          ros_topic: /hfluently/${CELL_LOWER}_transcription
           primitive: true
         fluently/user_input:       
           ros_topic: /hfluently/hfluently_response
@@ -55,5 +56,6 @@ mqtt_client:
         fluently/nlu_output:       
           ros_topic: /nlu_output
           primitive: true
-
-          
+        fluently/user:       
+          ros_topic: /fluently/user
+          primitive: true

@@ -1,5 +1,8 @@
 FROM osrf/ros:humble-desktop-full
 
+# Install envsubst
+RUN apt-get update && apt-get install -y --no-install-recommends gettext
+
 # Refresh ROS apt repo & key (fixes expired key issue)
 RUN apt-get update && apt-get install -y --reinstall ros2-apt-source
 
@@ -39,7 +42,7 @@ RUN . /opt/ros/humble/setup.sh && \
     colcon build --packages-up-to mqtt_client --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 # Copy custom config
-COPY ros2_params_mqtt_hfluently.yaml /home/hfluently_ws/src/mqtt_client/mqtt_client/config
+COPY ros2_params_mqtt_template.yaml /home/hfluently_ws/src/mqtt_client/mqtt_client/config
 
 # Copy entrypoint script
 COPY ./script.sh /
